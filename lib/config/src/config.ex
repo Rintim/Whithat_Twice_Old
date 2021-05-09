@@ -32,4 +32,13 @@ defmodule Whithat.Config do
   end
 
   def add_new(index, value), do: GenServer.call(__MODULE__.Server, {:insert, index, value})
+
+  @spec start? :: any
+  def start? do
+    try do
+      GenServer.call(__MODULE__.Server, :alive)
+    catch
+      :exit, {:noproc, _} -> false
+    end
+  end
 end
