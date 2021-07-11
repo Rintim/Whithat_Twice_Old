@@ -14,31 +14,51 @@
 defmodule Whithat.Config do
   import Standard
 
-  def start_link(state \\ []) do
-    GenServer.start_link(__MODULE__.Server, state, name: __MODULE__.Server)
-  end
+  begin "Function Defination" do
+    begin :A do
+      begin {:add, 2} do
+        def add(index, value) do
+          GenServer.cast(__MODULE__.Server, {:insert, index, value})
+          :ok
+        end
+      end
 
-  def fetch(index) do
-    GenServer.call(__MODULE__.Server, {:get, index})
-    |> case do
-      [] -> nil
-      [result] -> {:ok, result}
+      begin {:add_new, 2} do
+        def add_new(index, value), do: GenServer.call(__MODULE__.Server, {:insert, index, value})
+      end
+    end
+
+    begin :F do
+      begin {:fetch, 1} do
+        def fetch(index) do
+          GenServer.call(__MODULE__.Server, {:get, index})
+          |> case do
+            [] -> nil
+            [result] -> {:ok, result}
+          end
+        end
+      end
+    end
+
+    begin :S do
+      @spec start? :: boolean
+      begin {:start?, 0} do
+        def start? do
+          try do
+            GenServer.call(__MODULE__.Server, :alive)
+          catch
+            :exit, {:noproc, _} -> false
+          end
+        end
+      end
+
+      begin {:start_link, [0, 1]} do
+        def start_link(state \\ []) do
+          GenServer.start_link(__MODULE__.Server, state, name: __MODULE__.Server)
+        end
+      end
     end
   end
 
-  def add(index, value) do
-    GenServer.cast(__MODULE__.Server, {:insert, index, value})
-    :ok
-  end
 
-  def add_new(index, value), do: GenServer.call(__MODULE__.Server, {:insert, index, value})
-
-  @spec start? :: any
-  def start? do
-    try do
-      GenServer.call(__MODULE__.Server, :alive)
-    catch
-      :exit, {:noproc, _} -> false
-    end
-  end
 end

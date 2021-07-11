@@ -26,7 +26,8 @@ defmodule Whithat.MixProject do
 			{:standard, git: "https://gitlab.com/Theopse/standard.git", branch: :Development},
 			{:download, git: "https://gitlab.com/Theopse/download.git", branch: :Development},
 			{:bradot, git: "https://gitlab.com/Theopse/bradot.git", branch: :Development},
-			{:progress_bar, "~> 2.0"}
+			{:progress_bar, "~> 2.0"},
+			{:tharray, git: "https://gitlab.com/Theopse/tharray.git", branch: :Development}, # https://gitlab.com/Theopse/tharray.git
 			# {:dep_from_hexpm, "~> 0.3.0"},
 			# {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
 		]
