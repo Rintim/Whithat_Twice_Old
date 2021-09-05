@@ -1,8 +1,14 @@
 # Whithat
 
-Readme以後再補
+> Readme以後再補
 
-原地址： https://gitlab.com/Theopse/whithat_old
+> 原地址： https://gitlab.com/Theopse/whithat_old
+
+嘛，这个坑暂时不打算更新了，再更新也应该是新的仓库里了
+
+高三了，也该认真学习了。况且我都还没想好该以什么方式写这个项目。
+
+总之有需要的话用旧版吧，除了代码不好看外也没啥大问题
 
 ---
 
